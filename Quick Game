@@ -1,0 +1,73 @@
+def load_questions():
+    questions = [
+        {"question": "1. Who developed Python?",
+         "options": ["A. Dennis Ritchie", "B. Guido van Rossum", "C. James Gosling", "D. Bjarne Stroustrup"],
+         "answer": "B"},
+
+        {"question": "2. Which keyword is used to define a function in Python?",
+         "options": ["A. function", "B. define", "C. def", "D. fun"],
+         "answer": "C"},
+
+        {"question": "3. Which data type stores text in Python?",
+         "options": ["A. int", "B. float", "C. string", "D. bool"],
+         "answer": "C"},
+
+        {"question": "4. What symbol is used for comments in Python?",
+         "options": ["A. //", "B. #", "C. /* */", "D. --"],
+         "answer": "B"},
+
+        {"question": "5. Which function prints output?",
+         "options": ["A. display()", "B. output()", "C. print()", "D. show()"],
+         "answer": "C"},
+
+        {"question": "6. Which operator is used for power?",
+         "options": ["A. ^", "B. **", "C. %", "D. //"],
+         "answer": "B"},
+
+        {"question": "7. Which keyword creates a loop?",
+         "options": ["A. repeat", "B. iterate", "C. for", "D. loop"],
+         "answer": "C"},
+
+        {"question": "8. Which structure stores key-value pairs?",
+         "options": ["A. List", "B. Tuple", "C. Dictionary", "D. Set"],
+         "answer": "C"},
+
+        {"question": "9. Which function is used for user input?",
+         "options": ["A. input()", "B. read()", "C. scan()", "D. get()"],
+         "answer": "A"},
+
+        {"question": "10. What is the Python file extension?",
+         "options": ["A. .pt", "B. .pyt", "C. .py", "D. .python"],
+         "answer": "C"}
+    ]
+    return questions
+def quiz_game():
+    questions = load_questions()
+    score = 0
+    print("===== Welcome to Python Quiz Game =====\n")
+    for q in questions:
+        print(q["question"])
+        for option in q["options"]:
+            print(option)
+        try:
+            user_answer = input("Enter your answer (A/B/C/D): ").strip().upper()
+        except:
+            print("Input error. Using default answer A.")
+            user_answer = "A"
+        if user_answer == q["answer"]:
+            print("Correct Answer!\n")
+            score += 1
+        else:
+            print("Wrong Answer!")
+            print("Correct answer:", q["answer"], "\n")
+    print("===== Quiz Finished =====")
+    print("Your Score:", score, "/", len(questions))
+    percentage = (score / len(questions)) * 100
+    print("Percentage:", percentage, "%")
+    if percentage >= 80:
+        print("Excellent!")
+    elif percentage >= 50:
+        print("Good Job!")
+    else:
+        print("Keep Practicing!")
+quiz_game()
